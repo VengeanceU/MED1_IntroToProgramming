@@ -31,7 +31,7 @@ class Flower {
       ballY=y + r*sin(i);
       ellipse(ballX, ballY, r, r);
     }
-    fill(200, 0, 0);
+    fill(255, 255, 0);
     ellipse(x, y, r*1.2, r*1.2);
   }
   void move () {
@@ -48,9 +48,20 @@ class Flower {
   }
   void boundries() {
     if (x >= width-r || x<=0+r) {
-      xspeed *=-1;}
-    
+      xspeed *=-1;
+    }
+
     if (y > height-r || y<0+r) {
       yspeed *= -1;
-    }}
+    }
   }
+  void collition(Flower other) {
+    float d = dist(x,y,other.x,other.y);
+    if (d < r + other.r) {
+    yspeed *= -1;
+    xspeed *= -1;
+    petalColor = int (random(#000000,#FFFFFF));
+    }
+  
+  }
+}
