@@ -38,13 +38,9 @@ class Flower {
     x += xspeed;
     y += yspeed;
   }
-  void move2 () {
-    x += xspeed;
-    y += yspeed;
-  }
-  void move3 () {
-    x += xspeed;
-    y += yspeed;
+  void mouse () {
+    x = mouseX;
+    y = mouseY;
   }
   void boundries() {
     if (x >= width-r || x<=0+r) {
@@ -56,12 +52,11 @@ class Flower {
     }
   }
   void collition(Flower other) {
-    float d = dist(x,y,other.x,other.y);
-    if (d < r + other.r) {
-    yspeed *= -1;
-    xspeed *= -1;
-    petalColor = int (random(#000000,#FFFFFF));
+    float d = dist(x, y, other.x, other.y);
+    if (d < r*2 + other.r) {
+      yspeed *= -1;
+      xspeed *= -1;
+      petalColor = int (random(#000000, #FFFFFF));
     }
-  
   }
 }
